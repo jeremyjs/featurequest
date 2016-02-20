@@ -1,0 +1,21 @@
+{
+  "name": "featurequest",
+  "version": "1.0.0",
+  "description": "Saas application to improve product-user communication",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjman505/featurequest.git"
+  },
+  "author": "",
+  "license": "CC-BY-NC-3.0",
+  "bugs": {
+    "url": "https://github.com/jjman505/featurequest/issues"
+  },
+  "homepage": "https://github.com/jjman505/featurequest#readme"
+}
