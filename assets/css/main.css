@@ -1622,9 +1622,14 @@
 
 	}
 
+/*	.req {
+		text-decoration: underline;
+		font-weight: 700;
+	}
+*/
 	body {
 		background-color: #2e3141;
-		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.8), rgba(46, 49, 65, 0.8)), url("../../images/bg.jpg");
+		background-image: linear-gradient(to top, rgba(46, 49, 65, 0.9), rgba(46, 49, 65, 0.9)), url("../../images/bag-and-hands.jpg");
 		background-size: auto, cover;
 		background-attachment: fixed, fixed;
 		background-position: center, center;
@@ -3578,13 +3583,13 @@
 			width: 100%;
 		}
 
-		#footer .inner form {
-			margin: 0 3em 0 0;
-			width: calc(50% - 1.5em);
+		form {
+			margin: 0;
+			width: calc(50% - 1em);
 		}
 
 		#footer .inner .contact {
-			width: calc(50% - 1.5em);
+			/*width: calc(50% - 1.5em);*/
 		}
 
 		#footer .inner .copyright {
