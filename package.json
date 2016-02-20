@@ -4,7 +4,8 @@
   "description": "Saas application to improve product-user communication",
   "main": "server.js",
   "dependencies": {
-    "mongoose": "^4.4.4"
+    "mongoose": "^4.4.4",
+    "monsoon": "^0.1.4"
   },
   "devDependencies": {},
   "scripts": {
