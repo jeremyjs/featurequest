@@ -11,6 +11,29 @@
         <input type="text" class="form-control" id="comment">
       </div>
     </form>
+    <hr>
+    <ul class="quests">
+      <li class="quest">
+        <span class="leader">
+          <div class="btn-upvote"><i class="fa fa-chevron-up"></i></div>
+          <div class="quest-score"> 5 </div>
+          <div class="btn-downvote"><i class="fa fa-chevron-down"></i></div>
+        </span>
+        <span class="title"> Show which features are in progress </span>
+      </li>
+    </ul>
   </div>
 </div>
 <!-- /.container -->
+
+<script type="text/javascript">
+  function ListItem (o) {
+    return '';
+  }
+
+  var FeatureQuest = new Firebase("https://featurequest.firebaseio.com/");
+  FeatureQuest.child("quests").on("value", function(snap) {
+    var quests = snap.val();
+    console.log(quests);
+  });
+</script>
