@@ -5,13 +5,13 @@
     <!-- Header -->
       <header id="header" class="alt">
         <h1><a href="index.html">Featurequest</a></h1>
-        <nav>
+        {{!-- <nav>
           <a href="#menu">Menu</a>
-        </nav>
+        </nav> --}}
       </header>
 
     <!-- Menu -->
-      <nav id="menu">
+      {{!-- <nav id="menu">
         <div class="inner">
           <h2>Menu</h2>
           <ul class="links">
@@ -23,7 +23,7 @@
           </ul>
           <a href="#" class="close">Close</a>
         </div>
-      </nav>
+      </nav> --}}
 
     <!-- Banner -->
       <section id="banner">
@@ -31,21 +31,23 @@
           <div class="logo"><span class="icon fa-comments"></span></div>
           <h2>featurequest</h2>
           <p>It's about time user feedback got an upgrade.</p>
+          <a href="#" class="button">Get started!</a>
           <form method="post" action="#">
             <!-- <div class="field">
               <label for="name">Name</label>
               <input type="text" name="name" id="name" />
             </div> -->
+            <br>
             <div class="field">
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email" />
+              {{!-- <label for="email">Email</label> --}}
+              <input type="email" name="email" id="email" placeholder="you@email.com" />
             </div>
             <!-- <div class="field">
               <label for="message">Message</label>
               <textarea name="message" id="message" rows="4"></textarea>
             </div> -->
             <ul class="actions">
-              <li><button type="submit" value="<3"><i class="icon fa-heart"></i></button></li>
+              <li><button type="submit">Sign up!</button></li>
             </ul>
             {{!-- <ul class="actions">
               <li><input type="submit" value="I'm a user" /></li>
@@ -63,7 +65,7 @@
               {{!-- <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a> --}}
               <div class="content">
                 <h2 class="major">What is featurequest?</h2>
-                <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
+                <p>Traditionally, user feedback has been done through forums or text boxes. This is inefficient for companies and impersonal for users. With these methods, even the top tech companies waste man-hours on manually sifting through feedback, largely due to duplicate requests. Stop wasting time on duplicates with Featurequest. As the user types their request, we filter the list to help them find similar requests to upvote. Top voted items will show at the top, allowing teams to see clearly what users want while users are engaged and empowered.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
             </div>
@@ -74,8 +76,8 @@
             <div class="inner">
               {{!-- <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a> --}}
               <div class="content">
-                <h2 class="major">For Developers</h2>
-                <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
+                <h2 class="major">For Product Teams</h2>
+                <p>Your customers are the lifeblood of your business, so their feedback is crucial. Yet, your feedback process is inefficient, wasting time and money. Featurequest provides more efficient communication for that feedback and gives you a clear picture of the top priority tasks to drive engagement. With duplicate requests removed and clear rankings of priority, your business can move faster with happier customers.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
             </div>
@@ -87,7 +89,7 @@
               {{!-- <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a> --}}
               <div class="content">
                 <h2 class="major">For Users</h2>
-                <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
+                <p>Some products you really like are missing that one feature you need, or have an annoying bug. Submitting feedback can feel useless and impersonal. You don't know what other people are thinking and you don't know if your request is being answered. Featurequest gives you direct communication with the product team and lets you know when your request is in progress or completed.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
             </div>
@@ -135,23 +137,24 @@
     <!-- Footer -->
       <section id="footer">
         <div class="inner">
-          <h2 class="major">Sign up!</h2>
+          <h2 class="major">Get updates!</h2>
           <!-- <p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p> -->
           <form method="post" action="#">
             <!-- <div class="field">
               <label for="name">Name</label>
               <input type="text" name="name" id="name" />
             </div> -->
+            <br>
             <div class="field">
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email" />
+              {{!-- <label for="email">Email</label> --}}
+              <input type="email" name="email" id="email" placeholder="you@email.com" />
             </div>
             <!-- <div class="field">
               <label for="message">Message</label>
               <textarea name="message" id="message" rows="4"></textarea>
             </div> -->
             <ul class="actions">
-              <li><button type="submit" value="<3"><i class="icon fa-heart"></i></button></li>
+              <li><button type="submit">Sign up!</button></li>
             </ul>
             {{!-- <ul class="actions">
               <li><input type="submit" value="I'm a user" /></li>
