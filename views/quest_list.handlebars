@@ -31,13 +31,36 @@
 <!-- /.container -->
 
 <script type="text/javascript">
+  function Quest (o) {
+    o.score = o.upvotes - o.downvotes;
+    return o;
+  }
+
   function ListItem (o) {
-    return '';
+    return  '<li class="quest">' +
+              '<span class="leader">' +
+                '<div class="btn-upvote"><i class="fa fa-chevron-up"></i></div>' +
+                '<div class="quest-score"> ' + o.score + ' </div>' +
+                '<div class="btn-downvote"><i class="fa fa-chevron-down"></i></div>' +
+              '</span>' +
+              '<div class="title-outer">' +
+                '<div class="title">' +
+                  o.title +
+                '</div>' +
+              '</div>' +
+            '</li>';
   }
 
   var FeatureQuest = new Firebase("https://featurequest.firebaseio.com/");
   FeatureQuest.child("quests").on("value", function(snap) {
     var quests = snap.val();
     console.log(quests);
+    quests = quests.map(Quest);
+    var listItems = quests.map(ListItem);
+    var questsUl = document.querySelector('.quests');
+    questsUl.innerHTML = '';
+    listItems.forEach(function(li) {
+      questsUl.insertAdjacentHTML('beforeend', li);
+    });
   });
 </script>

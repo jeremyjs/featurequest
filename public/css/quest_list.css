@@ -3,6 +3,12 @@
   list-style: none;
 }
 
+.quest-list .quest {
+  display: block;
+  height: 90px;
+  width: 100%;
+}
+
 .quest-list .quest .leader,
 .quest-list .quest .title {
   display: inline-block;
