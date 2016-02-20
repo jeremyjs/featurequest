@@ -1,1 +1,28 @@
-/*.quest-list*/
+
+.quest-list ul.quests {
+  list-style: none;
+}
+
+.quest-list .quest .leader,
+.quest-list .quest .title {
+  display: inline-block;
+}
+
+.quest-list .quest .leader {
+  float: left;
+  height: 90px;
+  width: 90px;
+  text-align: center;
+}
+
+.quest-list .quest .title-outer {
+  float: left;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.quest-list .quest .title {
+  height: 30px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
