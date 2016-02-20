@@ -1,3 +1,7 @@
+.navbar-brand {
+  border-bottom: none;
+}
+
 .container:not(.topbar) {
-    margin: 20px;
+  padding-top: 80px;
 }

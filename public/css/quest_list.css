@@ -1,12 +1,36 @@
 
+.quest-list .header-box {
+  text-align: center;
+}
+
+.quest-list .new-request-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.quest-list .new-request-form .new-request-input {
+  height: 40px;
+  width: 30em;
+}
+
+.quest-list .new-request-form .request-type-select {
+  -webkit-appearance: menulist;
+  height: 40px;
+  width: auto;
+  padding-right: .5em;
+  text-align: center;
+}
+
 .quest-list ul.quests {
   list-style: none;
+  padding-left: 0;
 }
 
 .quest-list .quest {
   display: block;
   height: 90px;
   width: 100%;
+  padding-left: 0;
 }
 
 .quest-list .quest .leader,
