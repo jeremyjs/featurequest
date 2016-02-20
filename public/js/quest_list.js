@@ -23,6 +23,7 @@ function Quest (o) {
 }
 
 function ListItem (o) {
+  var iconName = 'fa-' + (o.type === 'bug' ? 'bug' : 'magic');
   return  '<li class="quest" id="' + o.id + '">' +
             '<span class="leader">' +
               '<div class="btn-vote btn-upvote" data-field="upvotes"><i class="fa fa-chevron-up"></i></div>' +
@@ -31,6 +32,7 @@ function ListItem (o) {
             '</span>' +
             '<div class="title-outer">' +
               '<div class="title">' +
+                '<i class="fa ' + iconName + '"></i>&nbsp;&nbsp;' +
                 o.title +
               '</div>' +
             '</div>' +
