@@ -10,4 +10,8 @@ router.get('/featurequest', function(req, res, next) {
   res.render('quest_list');
 });
 
+router.get('/company', function(req, res, next) {
+  res.render('quest_companies');
+});
+
 module.exports = router;
