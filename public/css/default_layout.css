@@ -1,0 +1,3 @@
+.container:not(.topbar) {
+    margin: 20px;
+}
