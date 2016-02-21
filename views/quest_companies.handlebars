@@ -1,24 +1,33 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-9 col-xs-offset-2">
 		    <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"> <!-- btn-default removed-->
-                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
-                    </button>
+                <!-- <div class="input-group-btn search-panel"> -->
+                    <!-- <button type="button" class="btn btn-secondary"> btn-default  dropdown-toggle data-toggle="dropdown" removed-->
+                    	<!-- <span id="search_concept">Company Name: </span> -->
+                      <!-- <span class="caret"></span> -->
+                    <!-- </button>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="#bug">Bug</a></li>
                       <li><a href="#feature">Feature</a></li>
                       <li class="divider"></li>
                       <li><a href="#all">Anything</a></li>
-                    </ul>
-                </div>
+                    </ul> -->
+                <!-- </div> -->
                 <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <input type="text" class="form-control" name="x" placeholder="Search for company...">
                 <span class="input-group-btn">
                     <button class="btn" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
-        </div>
 	</div>
+  <hr>
+  <ul class="companies">
+    <li class="company">
+      <div class="title-outer">
+        <div class="title">
+          Loading Companies...
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
