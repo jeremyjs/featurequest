@@ -144,7 +144,7 @@ $('#comment').keyup(function(e) {
       'caseSensitive': false,
       'includeScore': false,
       'shouldSort': true,
-      'threshold': 0.1,
+      'threshold': 0.4,
       'location': 0,
       'distance': 100,
       'maxPatternLength': 140,
