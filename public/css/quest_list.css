@@ -56,3 +56,14 @@
   padding-top: 1px;
   padding-bottom: 1px;
 }
+
+.quest-list .fa-chevron-up,
+.quest-list .fa-chevron-down {
+  cursor: pointer;
+}
+
+/* glow effect on hover */
+.quest-list .fa-chevron-up:hover,
+.quest-list .fa-chevron-down:hover {
+  text-shadow: 0px 0px 4px #ffc, 0px 0px 4px #fcf;
+}
