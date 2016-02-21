@@ -63,6 +63,7 @@ $(function () {
 
 $('#quet-input').submit(function (e) {
   e.preventDefault();
+  if ($('#comment').val()==="") return;
   Quests.push({
     'uid': 12345,
     'downvotes': 0,
@@ -72,7 +73,14 @@ $('#quet-input').submit(function (e) {
   });
 });
 
-$('#comment').keydown(function(event) {
+$('#comment').keyup(function(e) {
+
+  console.log("e.which: ", e.which);
+  var listItems;
+  if (e.which===16) {
+    // e.preventDefault();
+    return;
+  }
 
   Quests.once('value', function(snap) {
     var quests = snap.val();
@@ -87,7 +95,7 @@ $('#comment').keydown(function(event) {
       'caseSensitive': false,
       'includeScore': false,
       'shouldSort': true,
-      'threshold': 0.2,
+      'threshold': 0.1,
       'location': 0,
       'distance': 100,
       'maxPatternLength': 140,
@@ -96,9 +104,15 @@ $('#comment').keydown(function(event) {
 
     var fuz = new Fuse(quests, options);
     var srchParam = $('#comment').val();
-    var srch = fuz.search(srchParam);
-    console.log("srch: ", srch);
-    var listItems = srch.map(ListItem);
+    var listItems;
+    
+    if (e.which===91 && $('#comment').val()==="") { listItems = quests.map(ListItem); }
+    else { 
+      var srch = fuz.search(srchParam);
+      console.log("srchParam: ", srchParam);
+      listItems = srch.map(ListItem);
+    }
+
     var questsUl = document.querySelector('.quests');
     questsUl.innerHTML = '';
     listItems.forEach(function(li) {
