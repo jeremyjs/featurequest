@@ -1,0 +1,13 @@
+
+.new-product input,
+.new-product textarea {
+  width: 80%;
+}
+
+.new-product textarea {
+  height: 120px;
+}
+
+.new-product .danger {
+  color: #C23B22;
+}
