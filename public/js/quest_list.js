@@ -71,3 +71,28 @@ $('#quet-input').submit(function (e) {
   });
 });
 
+$('#comment').keypress(function(event) {
+  console.log("KEYPRESS");
+  var options = {
+    'keys': ['title']
+  }
+  FeatureQuest.child('quests').once('value', function(snap) {
+    var quests = snap.val();
+    var keys = Object.keys(quests);
+    quests = keys.map(function (key) {
+      var quest = quests[key];
+      quest.id = key;
+      return Quest(quest);
+    });
+    quests = new Fuse(quests, options);
+    var listItems = quests.map(ListItem); // 
+    var questsUl = document.querySelector('.quests');
+    questsUl.innerHTML = '';
+    listItems.forEach(function(li) {
+      questsUl.insertAdjacentHTML('beforeend', li);
+    });
+    activateBtnVote();
+  });
+
+});
+
