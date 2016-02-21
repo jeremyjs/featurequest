@@ -47,6 +47,7 @@ FeatureQuest.child('quests').on('value', function(snap) {
     quest.id = key;
     return Quest(quest);
   });
+  quests = quests.sort(function (a, b) { return a.score < b.score });
   var listItems = quests.map(ListItem);
   var questsUl = document.querySelector('.quests');
   questsUl.innerHTML = '';
