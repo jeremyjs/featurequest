@@ -3,7 +3,7 @@
 var Products = new Firebase('http://featurequest.firebaseio.com/products');
 var Quests = new Firebase('http://featurequest.firebaseio.com/quests');
 var productId , productObj;
-console.log("ID: ", document.getElementsByClassName('quest-list')[0].getAttribute('id'));
+// console.log("ID: ", document.getElementsByClassName('quest-list')[0].getAttribute('id'));
 productId = document.getElementsByClassName('quest-list')[0].getAttribute('id');
 var productObj = Products.child(productId).once('value',function(snap){
   return snap.val();
@@ -22,7 +22,7 @@ function activateBtnVote () {
     var $btnVote = $target.parents('.btn-vote');
     var $quest = $btnVote.parents('.quest');
     var id = $quest.attr('id');
-    console.log("$quest: ", $quest);
+    // console.log("$quest: ", $quest);
     var field = $btnVote.data('field');
     // if(field == 'downvotes'){
     //   Quests.child(id).transaction(function (quest) {
@@ -32,7 +32,7 @@ function activateBtnVote () {
     //   });
     // }else{
     Quests.child(id).transaction(function (quest) {
-      console.log("quest: ", quest);
+      // console.log("quest: ", quest);
       quest[field] += 1;
       return quest;
     });
@@ -58,7 +58,7 @@ function Quest (o) {
 }
 
 function ListItem (o) {
-  console.log("o: ", o);
+  // console.log("o: ", o);
   var iconName = 'fa-' + (o.type === 'bug' ? 'bug' : 'magic');
   var html =  '<li class="quest" id="' + o.id + '">' +
                 '<span class="leader">' +
@@ -79,9 +79,16 @@ function ListItem (o) {
   };
 }
 
-Quests.on('value', function(snap) {
+Quests.orderByChild('productId').equalTo(productId).on('value', function(snap) {
   var quests = snap.val();
-  var keys = Object.keys(quests);
+  // console.log("quests: ", quests);
+  var keys;
+  if (quests==null) {
+    $('.quest').html("Nothing here yet...");
+    return;
+  }
+  
+  keys = Object.keys(quests);
   quests = keys.map(function (key) {
     var quest = quests[key];
     quest.id = key;
@@ -92,7 +99,7 @@ Quests.on('value', function(snap) {
   listItems = Array.from(listItems);
   listItems = sortByScore(listItems);
   //console.log('listItems: ', listItems);
-
+  
   var questsUl = document.querySelector('.quests');
   questsUl.innerHTML = '';
   listItems.forEach(function(li) {
@@ -124,7 +131,7 @@ $('#quet-input').submit(function (e) {
 
 $('#comment').keyup(function(e) {
 
-  console.log("e.which: ", e.which);
+  // console.log("e.which: ", e.which);
   var listItems;
   if (e.which===16) {
     // e.preventDefault();
@@ -158,7 +165,7 @@ $('#comment').keyup(function(e) {
     if ($('#comment').val()==='') { listItems = quests.map(ListItem); }
     else {
       var srch = fuz.search(srchParam);
-      console.log('srch: ', srch);
+      // console.log('srch: ', srch);
       console.log("srchParam: ", srchParam);
       listItems = srch.map(ListItem);
     }
