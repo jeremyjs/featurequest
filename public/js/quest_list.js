@@ -1,5 +1,5 @@
 
-var FeatureQuest = new Firebase('http://featurequest.firebaseio.com/');
+// var FeatureQuest = new Firebase('http://featurequest.firebaseio.com/');
 var Quests = new Firebase('http://featurequest.firebaseio.com/quests');
 
 function activateBtnVote () {
@@ -39,7 +39,7 @@ function ListItem (o) {
           '</li>';
 }
 
-FeatureQuest.child('quests').on('value', function(snap) {
+Quests.on('value', function(snap) {
   var quests = snap.val();
   var keys = Object.keys(quests);
   quests = keys.map(function (key) {
@@ -62,21 +62,18 @@ $(function () {
 
 $('#quet-input').submit(function (e) {
   e.preventDefault();
-  FeatureQuest.child('quests').push({
+  Quests.push({
     'uid': 12345,
     'downvotes': 0,
-    'upvotes': 0,
+    'upvotes': 1,
     'type': $('#type option:selected').text().toLowerCase(),
     'title': $('#comment').val()
   });
 });
 
-$('#comment').keypress(function(event) {
-  console.log("KEYPRESS");
-  var options = {
-    'keys': ['title']
-  }
-  FeatureQuest.child('quests').once('value', function(snap) {
+$('#comment').keydown(function(event) {
+
+  Quests.once('value', function(snap) {
     var quests = snap.val();
     var keys = Object.keys(quests);
     quests = keys.map(function (key) {
@@ -84,8 +81,23 @@ $('#comment').keypress(function(event) {
       quest.id = key;
       return Quest(quest);
     });
-    quests = new Fuse(quests, options);
-    var listItems = quests.map(ListItem); // 
+
+    var options = {
+      'caseSensitive': false,
+      'includeScore': false,
+      'shouldSort': true,
+      'threshold': 0.2,
+      'location': 0,
+      'distance': 100,
+      'maxPatternLength': 140,
+      'keys': ["title"]
+    };
+
+    var fuz = new Fuse(quests, options);
+    var srchParam = $('#comment').val();
+    var srch = fuz.search(srchParam);
+    console.log("srch: ", srch);
+    var listItems = srch.map(ListItem);
     var questsUl = document.querySelector('.quests');
     questsUl.innerHTML = '';
     listItems.forEach(function(li) {
