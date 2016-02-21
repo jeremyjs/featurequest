@@ -1,72 +1,46 @@
-
-var companyQuest = new Firebase('http://featurequest.firebaseio.com/');
 var Companies = new Firebase('http://featurequest.firebaseio.com/companies');
 
-function activateBtnVote () {
-  $('.btn-vote').off('click');
-  $('.btn-vote').click(function (e) {
-    var $target = $(e.target);
-    var $btnVote = $target.parents('.btn-vote');
-    var $quest = $btnVote.parents('.quest');
-    var id = $quest.attr('id');
-    var field = $btnVote.data('field');
-    Quests.child(id).transaction(function (quest) {
-      quest[field] += 1;
-      return quest;
-    });
-  });
-}
-
-function Quest (o) {
-  o.score = o.upvotes - o.downvotes;
-  return o;
-}
-
 function ListItem (o) {
-  var iconName = 'fa-' + (o.type === 'bug' ? 'bug' : 'magic');
+  var iconName = 'fa-' + ' fa-building-o';
   return  '<li class="quest" id="' + o.id + '">' +
-            '<span class="leader">' +
-              '<div class="btn-vote btn-upvote" data-field="upvotes"><i class="fa fa-chevron-up"></i></div>' +
-              '<div class="quest-score"> ' + o.score + ' </div>' +
-              '<div class="btn-vote btn-downvote" data-field="downvotes"><i class="fa fa-chevron-down"></i></div>' +
-            '</span>' +
             '<div class="title-outer">' +
               '<div class="title">' +
                 '<i class="fa ' + iconName + '"></i>&nbsp;&nbsp;' +
-                o.title +
+                '<a href="/' + o.name + '">' + o.name + '</a>' +
               '</div>' +
             '</div>' +
           '</li>';
 }
 
-companyQuest.child('companies').on('value', function(snap) {
+Companies.on('value', function(snap) {
   var companies = snap.val();
   var keys = Object.keys(companies);
-  quests = keys.map(function (key) {
+  companies = keys.map(function (key) {
     var company = companies[key];
-    quest.id = key;
-    return Quest(quest);
+    company.id = key;
+    return company;
   });
   var listItems = companies.map(ListItem);
-  var questsUl = document.querySelector('.quests');
+  var companiesUl = document.querySelector('.companies');
   companiesUl.innerHTML = '';
   listItems.forEach(function(li) {
     companiesUl.insertAdjacentHTML('beforeend', li);
   });
-  activateBtnVote();
 });
 
-$(function () {
-  activateBtnVote();
-});
+// $('#company-input').submit(function (e) {
+//   e.preventDefault();
+//   Companies.push({
+//     'name': 'company'
+//   });
+// });
 
-$('#quet-input').submit(function (e) {
-  e.preventDefault();
-  companyQuest.child('companies').push({
-    'uid': 12345,
-    'downvotes': 0,
-    'upvotes': 0,
-    'type': $('#type option:selected').text().toLowerCase(),
-    'title': $('#comment').val()
+$(document).ready(function(e) {
+  $('.search-panel .dropdown-menu').find('a').click(function(e) {
+    e.preventDefault();
+    var param = $(this).attr("href").replace("#","");
+    var concept = $(this).text();
+    $('.search-panel span#search_concept').text(concept);
+    $('.input-group #search_param').val(param);
   });
 });
