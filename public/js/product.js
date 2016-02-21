@@ -87,7 +87,7 @@ Quests.orderByChild('productId').equalTo(productId).on('value', function(snap) {
     $('.quest').html("Nothing here yet...");
     return;
   }
-  
+
   keys = Object.keys(quests);
   quests = keys.map(function (key) {
     var quest = quests[key];
@@ -112,7 +112,7 @@ $(function () {
   activateBtnVote();
 });
 
-$('#quet-input').submit(function (e) {
+$('#quest-input').submit(function (e) {
   e.preventDefault();
   if ($('#comment').val()==='') return;
   var newID = Quests.push({
@@ -138,9 +138,16 @@ $('#comment').keyup(function(e) {
     return;
   }
 
-  Quests.once('value', function(snap) {
+  Quests.orderByChild('productId').equalTo(productId).once('value', function(snap) {
     var quests = snap.val();
-    var keys = Object.keys(quests);
+    var keys;
+    console.log("quests: ", quests);
+    if (quests==null) {
+      $('.quest').html("Nothing here yet...");
+      return;
+    }
+
+    keys = Object.keys(quests);
     quests = keys.map(function (key) {
       var quest = quests[key];
       quest.id = key;
