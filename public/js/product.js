@@ -3,8 +3,9 @@
 var Products = new Firebase('http://featurequest.firebaseio.com/products');
 var Quests = new Firebase('http://featurequest.firebaseio.com/quests');
 var productId , productObj;
-// console.log("ID: ", document.getElementsByClassName('quest-list')[0].getAttribute('id'));
 productId = document.getElementsByClassName('quest-list')[0].getAttribute('id');
+productId = parseInt(productId);
+console.log("productId: ", productId);
 var productObj = Products.child(productId).once('value',function(snap){
   return snap.val();
 });
@@ -80,32 +81,36 @@ function ListItem (o) {
 }
 
 Quests.orderByChild('productId').equalTo(productId).on('value', function(snap) {
-  var quests = snap.val();
-  // console.log("quests: ", quests);
-  var keys;
-  if (quests==null) {
-    $('.quest').html("Nothing here yet...");
-    return;
-  }
+  // console.log("snap.val(): ", snap.val());
+  // for (wget in snap.val()) {
+    // console.log("GRAB STUFF");
+    var quests = snap.val();//[wget];
+    // console.log("quests: ", quests);
+    var keys;
+    if (quests==null) {
+      $('.quests').html("Nothing here yet...");
+      return;
+    }
 
-  keys = Object.keys(quests);
-  quests = keys.map(function (key) {
-    var quest = quests[key];
-    quest.id = key;
-    return Quest(quest);
-  });
+    keys = Object.keys(quests);
+    quests = keys.map(function (key) {
+      var quest = quests[key];
+      quest.id = key;
+      return Quest(quest);
+    });
 
-  var listItems = quests.map(ListItem);
-  listItems = Array.from(listItems);
-  listItems = sortByScore(listItems);
-  //console.log('listItems: ', listItems);
-  
-  var questsUl = document.querySelector('.quests');
-  questsUl.innerHTML = '';
-  listItems.forEach(function(li) {
-    questsUl.insertAdjacentHTML('beforeend', li.html);
-  });
-  activateBtnVote();
+    var listItems = quests.map(ListItem);
+    listItems = Array.from(listItems);
+    listItems = sortByScore(listItems);
+    //console.log('listItems: ', listItems);
+    
+    var questsUl = document.querySelector('.quests');
+    questsUl.innerHTML = '';
+    listItems.forEach(function(li) {
+      questsUl.insertAdjacentHTML('beforeend', li.html);
+    });
+    activateBtnVote();
+  // }
 });
 
 $(function () {
@@ -143,7 +148,7 @@ $('#comment').keyup(function(e) {
     var keys;
     console.log("quests: ", quests);
     if (quests==null) {
-      $('.quest').html("Nothing here yet...");
+      $('.quests').html("Nothing here yet...");
       return;
     }
 
