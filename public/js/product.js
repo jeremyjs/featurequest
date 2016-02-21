@@ -3,11 +3,11 @@
 var Products = new Firebase('http://featurequest.firebaseio.com/products');
 var Quests = new Firebase('http://featurequest.firebaseio.com/quests');
 var productId , productObj;
-  console.log(document.getElementsByClassName('quest-list')[0].getAttribute('id'));
-  productId = document.getElementsByClassName('quest-list')[0].getAttribute('id');
-  var productObj = Products.child(productId).once('value',function(snap){
-    return snap.val();
-  });
+console.log("ID: ", document.getElementsByClassName('quest-list')[0].getAttribute('id'));
+productId = document.getElementsByClassName('quest-list')[0].getAttribute('id');
+var productObj = Products.child(productId).once('value',function(snap){
+  return snap.val();
+});
 
 function sortDescendingByScore (list) {
   return list.sort(function (a, b) { return b.score - a.score });
@@ -22,39 +22,43 @@ function activateBtnVote () {
     var $btnVote = $target.parents('.btn-vote');
     var $quest = $btnVote.parents('.quest');
     var id = $quest.attr('id');
+    console.log("$quest: ", $quest);
     var field = $btnVote.data('field');
-    if(field == 'downvotes'){
+    // if(field == 'downvotes'){
+    //   Quests.child(id).transaction(function (quest) {
+    //     console.log("quest: ", quest);
+    //     quest[field] -= 1;
+    //     return quest;
+    //   });
+    // }else{
     Quests.child(id).transaction(function (quest) {
-      console.log("Field: ", quest);
-      quest[0] -= 1;
+      console.log("quest: ", quest);
+      quest[field] += 1;
       return quest;
     });
-  }else{
-    Quests.child(id).transaction(function (quest) {
-      console.log("Field: ", quest);
-      quest[0] += 1;
-      return quest;
-    });
-  }
+    // }
   });
 }
 
 function Quest (o) {
-  var numDown = 0, numUp;
-  if(o.downvotes){
-    numDown = Array.from(o.downvotes).length;
-  }
+  // var numDown = 0, numUp;
+  // if(o.downvotes){
+  //   numDown = Array.from(o.downvotes).length;
+  // }
 
-  if(o.upvotes){
-    numUp = Array.from(o.upvotes).length;
-  }else{
-    numUp = 1;
-  }
-  o.score = numUp - numDown;
+  // if(o.upvotes){
+  //   numUp = Array.from(o.upvotes).length;
+  // }else{
+  //   numUp = 1;
+  // }
+  // o.score = numUp - numDown;
+  // return o;
+  o.score = o.upvotes - o.downvotes
   return o;
 }
 
 function ListItem (o) {
+  console.log("o: ", o);
   var iconName = 'fa-' + (o.type === 'bug' ? 'bug' : 'magic');
   var html =  '<li class="quest" id="' + o.id + '">' +
                 '<span class="leader">' +
@@ -110,11 +114,12 @@ $('#quet-input').submit(function (e) {
     'title': $('#comment').val(),
     'productId' : productId,
     'status' : "PENDING",
-    'score' : 0
+    'score' : 0,
+    'downvotes': 0
   });
   $('#comment').val('');
-  var storageRef = Quests.child(newID).child("upvotes").push();  //come back another day
-  storageRef.set({'uid' : Math.random() % 500});
+  // var storageRef = Quests.child(newID).child("upvotes").push();  //come back another day
+  // storageRef.set({'uid' : Math.random() % 500});
 });
 
 $('#comment').keyup(function(e) {
