@@ -59,3 +59,15 @@ FeatureQuest.child('quests').on('value', function(snap) {
 $(function () {
   activateBtnVote();
 });
+
+$('#quet-input').submit(function (e) {
+  e.preventDefault();
+  FeatureQuest.child('quests').push({
+    'uid': 12345,
+    'downvotes': 0,
+    'upvotes': 0,
+    'type': $('#type option:selected').text().toLowerCase(),
+    'title': $('#comment').val()
+  });
+});
+
