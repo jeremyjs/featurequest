@@ -144,7 +144,7 @@ $('#comment').keyup(function(e) {
       'caseSensitive': false,
       'includeScore': false,
       'shouldSort': true,
-      'threshold': 0.4,
+      'threshold': 0.5,
       'location': 0,
       'distance': 100,
       'maxPatternLength': 140,
@@ -164,7 +164,7 @@ $('#comment').keyup(function(e) {
     }
 
     listItems = Array.from(listItems);
-    listItems = sortByScore(listItems);
+    // listItems = sortByScore(listItems);
     //console.log('listItems: ', listItems);
 
     var questsUl = document.querySelector('.quests');
