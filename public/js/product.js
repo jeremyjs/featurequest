@@ -4,7 +4,7 @@ var Products = new Firebase('http://featurequest.firebaseio.com/products');
 var Quests = new Firebase('http://featurequest.firebaseio.com/quests');
 var productId , productObj;
 productId = document.getElementsByClassName('quest-list')[0].getAttribute('id');
-productId = parseInt(productId);
+// productId = parseInt(productId);
 console.log("productId: ", productId);
 var productObj = Products.child(productId).once('value',function(snap){
   return snap.val();
