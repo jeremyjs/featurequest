@@ -9,6 +9,7 @@
     "debug": "2.2.0",
     "express": "4.13.1",
     "express-handlebars": "3.0.0",
+    "firebase": "^2.4.1",
     "jade": "1.11.0",
     "mongoose": "4.4.4",
     "monsoon": "0.1.4",

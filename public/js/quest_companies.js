@@ -1,8 +1,8 @@
-var Companies = new Firebase('http://featurequest.firebaseio.com/companies');
+var Products = new Firebase('http://featurequest.firebaseio.com/products');
 
 function ListItem (o) {
   var iconName = 'fa-' + ' fa-building-o';
-  return  '<li class="quest" id="' + o.id + '">' +
+  return  '<li class="quest" id="' + o.name + '">' +
             '<div class="title-outer">' +
               '<div class="title">' +
                 '<i class="fa ' + iconName + '"></i>&nbsp;&nbsp;' +
@@ -12,19 +12,19 @@ function ListItem (o) {
           '</li>';
 }
 
-Companies.on('value', function(snap) {
-  var companies = snap.val();
-  var keys = Object.keys(companies);
-  companies = keys.map(function (key) {
-    var company = companies[key];
-    company.id = key;
-    return company;
+Products.on('value', function(snap) {
+  var products = snap.val();
+  var keys = Object.keys(products);
+  products = keys.map(function (key) {
+    var product = products[key];
+    product.id = key.name;
+    return product;
   });
-  var listItems = companies.map(ListItem);
-  var companiesUl = document.querySelector('.companies');
-  companiesUl.innerHTML = '';
+  var listItems = products.map(ListItem);
+  var productsUl = document.querySelector('.products');
+  productsUl.innerHTML = '';
   listItems.forEach(function(li) {
-    companiesUl.insertAdjacentHTML('beforeend', li);
+    productsUl.insertAdjacentHTML('beforeend', li);
   });
 });
 
