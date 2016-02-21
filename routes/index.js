@@ -16,7 +16,7 @@ router.get('/search-products', function(req, res, next) {
 });
 
 router.get('/about', function(req, res, next) {
-  res.render('featureQuest_About', { title: title });
+  res.render('about', { title: title });
 });
 
 module.exports = router;
