@@ -29,6 +29,10 @@ router.get('/about', function(req, res, next) {
 //   res.render('featureQuest', { title: title });
 // });
 
+router.get('/new-product', function(req, res, next) {
+  res.render('new-product', { title: title });
+});
+
 // This line is a template
 router.get('/:product', function(req, res, next) {
   var name = req.params.product;
