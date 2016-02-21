@@ -14,4 +14,8 @@ router.get('/company', function(req, res, next) {
   res.render('quest_companies');
 });
 
+router.get('/about', function(req, res, next) {
+  res.render('featureQuest_About');
+});
+
 module.exports = router;

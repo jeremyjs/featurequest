@@ -2,6 +2,10 @@
   border-bottom: none;
 }
 
+.navbar-nav a {
+  border-bottom: none;
+}
+
 .container:not(.topbar) {
   padding-top: 80px;
 }
