@@ -1,25 +1,30 @@
 <div class="container">
-    <div class="row">
-		    <div class="input-group">
-                <!-- <div class="input-group-btn search-panel"> -->
-                    <!-- <button type="button" class="btn btn-secondary"> btn-default  dropdown-toggle data-toggle="dropdown" removed-->
-                    	<!-- <span id="search_concept">Company Name: </span> -->
-                      <!-- <span class="caret"></span> -->
-                    <!-- </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#bug">Bug</a></li>
-                      <li><a href="#feature">Feature</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#all">Anything</a></li>
-                    </ul> -->
-                <!-- </div> -->
-                <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Search for product...">
-                <span class="input-group-btn">
-                    <button class="btn" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-            </div>
-	</div>
+  {{!-- <div class="row">
+    <div class="input-group">
+      <!-- <div class="input-group-btn search-panel"> -->
+        <!-- <button type="button" class="btn btn-secondary"> btn-default  dropdown-toggle data-toggle="dropdown" removed-->
+          <!-- <span id="search_concept">Company Name: </span> -->
+          <!-- <span class="caret"></span> -->
+        <!-- </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#bug">Bug</a></li>
+          <li><a href="#feature">Feature</a></li>
+          <li class="divider"></li>
+          <li><a href="#all">Anything</a></li>
+        </ul> -->
+      <!-- </div> -->
+      <input type="hidden" name="search_param" value="all" id="search_param">
+      <input type="text" class="form-control" name="x" placeholder="Search for product...">
+      <span class="input-group-btn">
+        <button class="btn" type="button"><span class="glyphicon glyphicon-search"></span></button>
+      </span>
+    </div>
+  </div> --}}
+  <div class="header-box">
+    <h1 class="pull-left">Product Listing</h1>
+    <button onclick="location.href='/new-product';" class="pull-right" id="submit">Create a New Product Page</button>
+    <br>
+  </div>
   <hr>
   <ul class="products">
     <li class="product">
