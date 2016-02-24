@@ -15,6 +15,7 @@ app.set('view engine', 'handlebars');
 
 var routes = require('./routes/index');
 var products = require('./routes/products');
+var quests = require('./routes/quests');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
