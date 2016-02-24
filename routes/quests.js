@@ -4,24 +4,23 @@ var title = 'FeatureQuest';
 var Firebase = require('firebase');
 var Quests = new Firebase('https://featurequest.firebaseio.com/quests');
 
-router.get('/', function(req, res, next) {
-  res.render('quest_companies', { title: title, pageJs: 'quest_companies' });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('quest_companies', { title: title, pageJs: 'quest_companies' });
+// });
 
 // This line is a template
-router.get('/quests/:quest', function(req, res, next) {
-  var title = req.params.quest;
-  var title = title + ' - FeatureQuest ';
-  var desc, id;
+router.get('/:quest', function(req, res, next) {
+  var id = req.params.quest;
+  var title, status;//title + ' - FeatureQuest ';
 
-  Quests.orderByChild('title').equalTo(title).once('value', function(snap){
+  Quests.child(id).once('value', function(snap){
     if (!snap.exists()) { res.render('not_found'); return; }
 
-    for(wget in snap.val()){
-      console.log(snap.val()[wget]);
-      status = snap.val()[wget].status;
-      id = wget;
-    }
+    // for(wget in snap.val()){
+      console.log(snap.val());
+      title = snap.val().title;
+      status = snap.val().status;
+    // }
 
     // res.render('product', { title: title, name : name , desc : desc, id : id, pageJs: 'product' });
     console.log('ID: ', id);
@@ -29,7 +28,7 @@ router.get('/quests/:quest', function(req, res, next) {
     // console.log('Name: ', name);
     console.log('Title: ', title);
     // firebase wurrty - Jeremy
-    res.render('product', { title: title, name : name , desc : desc, id : id, pageJs: 'product' });
+    res.render('quest', { title: title , status : status, id : id, pageJs: 'quest' });
   });
 });
 

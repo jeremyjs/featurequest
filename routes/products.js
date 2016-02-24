@@ -15,7 +15,10 @@ router.get('/:product', function(req, res, next) {
   var desc, id;
 
   Products.orderByChild('name').equalTo(name).once('value', function(snap){
-    if (!snap.exists()) { res.render('not_found'); }
+    if (!snap.exists()) {
+      res.render('not_found');
+      return;
+    }
 
     for(wget in snap.val()){
       console.log(snap.val()[wget]);

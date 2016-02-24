@@ -1,0 +1,30 @@
+<!-- Page Content -->
+<div id="{{id}}" class="container quest-list">
+  <div class="header-box">
+    <h1>Editing: &nbsp;&nbsp;"{{title}}"</h1>
+    <p>Currently: &nbsp;&nbsp;{{status}}</p>
+    <form id="quest-input" role="form" class="form-inline new-request-form">
+      <div class="form-group">
+        <input value="{{title}}" type="text" class="form-control new-request-input" id="comment" autofocus>
+      </div>
+      <div class="form-group">
+        <select name="type" id="type" class="quest-type-select">
+          <option value="pending">PENDING</option>
+          <option value="in_progress">IN_PROGRESS</option>
+          <option value="done">DONE</option>
+        </select>
+      </div>
+      <!-- <div class="form-group">
+        <select name="type" id="type" class="request-type-select">
+          <option value="feature">Feature</option>
+          <option value="bug">Bug</option>
+        </select>
+      </div> -->
+    </form>
+  </div>
+  <hr>
+  {{!-- <ul class="quests">
+    Loading items...
+  </ul> --}}
+</div>
+<!-- /.container -->
