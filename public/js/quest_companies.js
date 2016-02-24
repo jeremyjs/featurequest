@@ -6,7 +6,7 @@ function ListItem (o) {
             '<div class="title-outer">' +
               '<div class="title">' +
                 '<i class="fa ' + iconName + '"></i>&nbsp;&nbsp;' +
-                '<a href="/' + o.name + '">' + o.name + '</a>' +
+                '<a href="/products/' + o.name + '">' + o.name + '</a>' +
               '</div>' +
             '</div>' +
           '</li>';

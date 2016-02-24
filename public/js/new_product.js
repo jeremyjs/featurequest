@@ -35,7 +35,7 @@ $('#new-product-form').submit(function (e) {
     'desc': product_desc
   });
 
-  location.href = '/' + product_name;
+  location.href = '/products/' + product_name;
 
   // var storageRef = Quests.child(newID).child("upvotes").push();  //come back another day
   // storageRef.set({'uid' : Math.random() % 500});
