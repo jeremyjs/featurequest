@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 //   res.render('quest_list', { title: title, pageJs: 'quest_list' });
 // });
 
-router.get('/search-products', function(req, res, next) {
+router.get('/products', function(req, res, next) {
   res.render('quest_companies', { title: title, pageJs: 'quest_companies' });
 });
 
