@@ -7,42 +7,52 @@
         <div class="inner">
           <div class="logo"><span class="icon fa-comments"></span></div>
           <h2>FeatureQuest</h2>
-          <p>It's about time user feedback got an upgrade. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="/search-products" class="button ">Try the beta!</a></p>
-          <form method="post" action="http://formspree.io/michael@dunmoapp.com">
+          <p>It's about time user feedback got an upgrade.
+          </p>
+          <form id="email-form" method="post" action="http://formspree.io/michael@dunmoapp.com">
             <!-- <div class="field">
               <label for="name">Name</label>
               <input type="text" name="name" id="name" />
             </div> -->
-            <br>
             <div class="field">
               {{!-- <label for="email">Email</label> --}}
-              <input type="email" name="email" id="email" placeholder="you@email.com" />
+              
+              <input type="email" name="email" id="email-input" placeholder="you@email.com" />
+              <button type="submit" id="email-submit">Sign up!</button>
             </div>
+
             <!-- <div class="field">
               <label for="message">Message</label>
               <textarea name="message" id="message" rows="4"></textarea>
             </div> -->
-            <ul class="actions">
-              <li><button type="submit">Get updates!</button></li>
-              {{!-- <script>
-              function loginFunction(){
-                console.log("Login here");
-                var ref = new Firebase("https://featurequest.firebaseio.com");
-                ref.authWithOAuthPopup("google", function(error, authData) {
-                  if (error) {
-                    console.log("Login Failed!", error);
-                  } else {
-                    console.log("Authenticated successfully with payload:", authData);
-                  }
-                });
-              }
-              </script> --}}
-            </ul>
+            {{!-- <ul class="actions"> --}}
+              {{!-- <li><button type="submit">Get updates!</button></li> --}}
+              
+            {{!-- </ul> --}}
             {{!-- <ul class="actions">
               <li><input type="submit" value="I'm a user" /></li>
             </ul> --}}
           </form>
+
+          <script>
+            function showEmailField(){
+              if ( $('form#email-form').css('display') === "none" )
+                $('form#email-form').css('display', 'inline');
+              else
+                $('form#email-form').css('display', 'none')
+            }
+          </script>
+
+          <button onclick="showEmailField();" id="email-display">Get updates!</button>
+          <a href="/products" class="button" id="try">Try the beta!</a>
+
+          <a href="#one" class="control">
+            <div id="down">
+              Learn more
+              <br>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -55,7 +65,7 @@
               {{!-- <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a> --}}
               <div class="content">
                 <h2 class="major">What is FeatureQuest?</h2>
-                <p>User feedback has traditionally been done through forums or text boxes, which is often impersonal for users. User feedback should strengthen customer relationships and drive engagement. We're building a platform to foster interactive<br>communities in which users can collaborate and share their feature requests and bug fix<br>requests with each other and the creators of the products they use.</p>
+                <p>User feedback has traditionally been done through forums or text boxes. This is often impersonal for users. User feedback should strengthen customer relationships and drive engagement. We're building a platform in which users can collaborate on feature and bug fix requests. FeatureQuest brings the product creators into the mix to be part of the conversation.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
             </div>
@@ -67,7 +77,7 @@
               {{!-- <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a> --}}
               <div class="content">
                 <h2 class="major">How does it work?</h2>
-                <p>With the traditional feedback methods, even the top tech companies waste man-hours on manually sifting through feedback, largely due to duplicate requests. Stop wasting time on duplicates with FeatureQuest. As the user types their request, we filter the list to help them find similar requests to upvote. Top voted items will show at the top, allowing teams to see clearly what users want while users are engaged and empowered.</p>
+                <p>FeatureQuest is a Reddit-like platform built specifically for user feedback. Each app or product has its own feedback page where users can post feature and bug-fix requests. As users type a request, we filter the list below to help them find similar requests to upvote. The community can upvote, downvote, and comment on each item. Product developers can take part in the discussion and mark items as "In Progress" and "Done". This allows developers to show they value user feedback.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
             </div>
@@ -79,7 +89,7 @@
               {{!-- <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a> --}}
               <div class="content">
                 <h2 class="major">For Users</h2>
-                <p>Some products you really like are missing that one feature you need, or have an annoying bug. Submitting feedback can feel useless and impersonal. You don't know what other people are thinking and you don't know if your request is being answered. FeatureQuest gives you direct communication with the product team and lets you know when your request is in progress or completed.</p>
+                <p>Some products you really like are missing that one feature you need, or have an annoying bug. Submitting feedback can feel useless and impersonal. You don't know what other people are thinking and you don't know if your request is being answered. FeatureQuest puts you in direct communication with the product team. Be the first to know when what you asked for is in progress or completed.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
             </div>
@@ -90,7 +100,7 @@
             <div class="inner">
               <div class="content">
                 <h2 class="major">For Product Teams</h2>
-                <p>Your customers are the lifeblood of your business, so their feedback is crucial. Yet, your feedback process is inefficient, wasting time and money. FeatureQuest provides more efficient communication for that feedback and gives you a clear picture of the top priority tasks to drive engagement. With duplicate requests removed and clear rankings of priority, your business can move faster with happier customers.</p>
+                <p>Your customers are the lifeblood of your business, so their feedback is crucial. Your feedback process should be efficient and personal. You're likely wasting man-hours sifting through duplicate feedback. Stop wasting time on duplicates with FeatureQuest. Top voted items will show at the top. With prioritized requests and fewer duplicates, your business can move faster. Help your users feel valued by letting them know when you're building what they asked for. Meanwhile, keep your users engaged in community discussion around your product.</p>
                 <!-- <a href="#" class="special">Learn more</a> -->
               </div>
               {{!-- <section class="features">
@@ -172,3 +182,5 @@
       </section>
 
   </div>
+
+  

@@ -6,7 +6,7 @@ var Products = new Firebase('https://featurequest.firebaseio.com/products');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: title });
+  res.render('index', { title: title, customScroll: true });
 });
 
 router.get('/about', function(req, res, next) {

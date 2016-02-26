@@ -1887,6 +1887,40 @@
     text-align: right;
   }
 
+
+/* CUSTOM */
+  #email-form {
+    display: none;
+    width: 100%;
+  }
+
+  #email-input {
+    display: inline;
+    width: 28em;
+    height: 3em;
+    /*margin-bottom: 3em;*/
+  }
+
+  form div.field {
+    margin-bottom: 3em;
+  }
+
+  #email-display {
+    margin-right: 1em;
+  }
+
+  #down {
+    text-align: center;
+    margin-bottom: -5vh;
+    margin-top: 14vh;
+  }
+
+  a.control:visited,
+  a.control:active {
+    text-decoration: none;
+    color: white;
+  }
+
 /* Section/Article */
 
   section.special, article.special {
@@ -2539,6 +2573,7 @@
     button:hover,
     .button:hover {
       background-color: rgba(255, 255, 255, 0.025);
+      text-decoration: none;
     }
 
     input[type="submit"]:active,
@@ -2547,6 +2582,7 @@
     button:active,
     .button:active {
       background-color: rgba(255, 255, 255, 0.075);
+      text-decoration: none;
     }
 
     input[type="submit"].icon:before,

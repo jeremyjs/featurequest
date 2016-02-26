@@ -32,8 +32,8 @@
 
   <!-- Scripts -->
 
-  <script src="/js/skel.min.js"></script>
   <script src="/js/jquery.min.js"></script>
+  <script src="/js/skel.min.js"></script>
   <script src="/js/jquery.scrollex.min.js"></script>
   <script src="/js/fuse.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
@@ -42,6 +42,58 @@
   <!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
   <script src="/js/main.js"></script>
   {{#if pageJs}}<script src="/js/{{pageJs}}.js"></script>{{/if}}
+
+  {{#if customScroll}}<script type="text/javascript">
+    $(document).ready(function() {
+
+      if(location.hash !== "") {
+
+        var speed = 2000;
+
+        setTimeout(function () {
+          var dest = 0;
+          if ($(location.hash).offset().top > $(document).height() - $(window).height()) {
+              dest = $(document).height() - $(window).height();
+          } else {
+              dest = $(location.hash).offset().top;
+          }
+          //go to destination
+          $('html,body').animate({
+              scrollTop: dest
+          }, speed, 'swing');
+          console.log("did the thing");
+        },speed+500);
+      }
+
+      $("a.control").click(function(event) {
+        var selector = $(this).attr("href");
+
+        event.preventDefault();
+
+        var speed = 2000;
+        if (selector === "#writer") { speed = 7000; };
+
+        var dest = 0;
+        if ($(selector).offset().top > $(document).height() - $(window).height()) {
+            dest = $(document).height() - $(window).height();
+        } else {
+            dest = $(selector).offset().top;
+        }
+
+          $('html,body').animate({
+              scrollTop: dest
+          }, speed+500, 'swing');
+
+          console.log("did the thing");
+
+        setTimeout(function() {
+          location.hash = selector;
+        },speed*2);
+
+      });
+      
+    });
+  </script>{{/if}}
 
 </body>
 </html>
